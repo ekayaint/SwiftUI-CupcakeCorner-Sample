@@ -20,9 +20,16 @@ struct AddressView: View {
             } //: Sec
             
             Section {
-                
+                NavigationLink {
+                    CheckoutView(order: order)
+                } label: {
+                    Text("Check out")
+                }
             } //: Sec
+            .disabled(order.hasValidAddress == false)
         } //: Form
+        .navigationTitle("Delivery Details")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

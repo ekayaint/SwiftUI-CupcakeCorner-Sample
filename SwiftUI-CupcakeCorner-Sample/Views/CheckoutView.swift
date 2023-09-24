@@ -11,7 +11,23 @@ struct CheckoutView: View {
     @ObservedObject var order: Order
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                AsyncImage(url: URL(string: "https://hws.dev/img/cupcakes@3x.jpg"), scale: 3) { img in
+                    img
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(height: 233)
+                
+                Text("Your total is \(order.cost, format: .currency(code: "USD"))")
+                    .font(.title)
+                
+                
+            } //: VStack
+        } //: ScrollView
     }
 }
 
